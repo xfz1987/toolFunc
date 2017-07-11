@@ -1,0 +1,9 @@
+* typeof
+  适合基本类型及function检测，遇到null失效
+* [[Class]]
+  通过{}.toString拿到，蛇和内置对象和基本类型，遇到null和undefined失效
+* instanceof
+  适合自定义对象，也可以用来检测原生对象，在不同iframe和window间检测时失效
+  * 对象 instanceof 函数/构造器: instanceof 会判断右边的构造器的prototype 是否出现在左边对象的原型链上
+    [1,2] instanceof Array === true;
+    new Object() instanceof Array === false;
