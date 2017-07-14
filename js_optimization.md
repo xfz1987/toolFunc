@@ -1,19 +1,18 @@
-优化代码的目的:
-1.代码语句精简:减少代码字节量(减小文件打下)，进而提高文件加载速度
-①变量和函数命名要语义化
-定义变量：带出将来用到时的类型
-var bFound,iCount,sName,oPerson;
-②松散耦合（内容、样式、行为尽量分离）
-a.应尽量避免在js中创建大量HTML
-b.js修改css样式 element.className="edit",这样就可以动态更改样式而非特定样式来实现，有问题就直接修改css即可
-c.将复杂事件方法分离
-③避免过多全局变量(最好只设一个)
-var myApplication = {
-var timer = null,
-sayName:function(){
-alert(timer);
-}
-};
+# 优化代码的目的:
+## 1.代码语句精简:减少代码字节量(减小文件打下)，进而提高文件加载速度
+>  ①变量和函数命名要语义化
+>  定义变量：带出将来用到时的类型 var bFound,iCount,sName,oPerson;
+>  ②松散耦合（内容、样式、行为尽量分离）
+>  a.应尽量避免在js中创建大量HTML
+>  b.js修改css样式 element.className="edit",这样就可以动态更改样式而非特定样式来实现，有问题就直接修改css即可
+>  c.将复杂事件方法分离
+>  ③避免过多全局变量(最好只设一个)
+>  var myApplication = {
+>     var timer = null,
+>     sayName:function(){
+>        alert(timer);
+>     }
+>  };
 ④避免与null进行比较
 引用类型: if(values instanceof 类型)
 基本类型: if(typeof(value) == 类型)
