@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn1">点我1</button>
+	<button id="btn2">点我2</button>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
+	<script>
+		/**
+		 * 在javascript中，this指代的对象时常会变化，这会造成程序，混乱，
+		 * 一般做法就是先将this保存在一个变量中，就不怕她变了，我们先看一个小例子
+		 */
+		var btn1 = document.getElementById('btn1');
+		var A = function(){
+     		this.start = function(){alert('I am A');};
+     		this.beg = function(){
+     		   var that = this;
+     		   btn1.onclick = function(){
+     		         //this.start();//这里的this指代的是$node对象
+     		         that.start();
+     		   };
+    		};
+		};
+		var a = new A();
+		a.beg();
+		
+		/**
+		 *  JQuery提供了proxy方法，它可以绑定代理一个对象，this变了，我不怕不怕啦，that当this，我不怕不怕不怕啦，proxy有了你出现，对象变化，我不怕啦......
+		 */
+		var $btn = $('#btn2');
+		var B = function(){
+     		this.start = function(){alert('I am B');};
+     		this.beg = function(){
+     			$btn.on('click', $.proxy(function(){
+     				this.start();
+     			}, this));
+    		};
+		};
+		var b = new B();
+		b.beg();
+	</script>
+</body>
+</html>
